@@ -1,6 +1,7 @@
 const inputs= document.querySelectorAll('.input')
 const selectes= document.querySelectorAll('.select')
 const State= document.getElementById('State')
+const error = document.querySelectorAll('.error')
 console.log(document.cookie)
 let arr = document.cookie.split(' ')
 for (let i = 0; i < arr.length; i++) {
@@ -49,15 +50,33 @@ document.forms.form1.onsubmit = function() {
         let year = parseInt(birthday)
         if(isNaN(name) && name !==""){
             document.cookie =`name=${name}`
+            error[0].style.display = 'none'
+        }else{
+            error[0].style.display = 'block'
+
         }
         if(email !== ''){
             document.cookie =`email=${email}`
+            error[1].style.display = 'none'
+        }else{
+            error[1].style.display = 'block'
+
         }
         if(phoneLength < 11){
             document.cookie =`phone=${phone}`
+            error[2].style.display = 'none'
+
+        }else{
+            error[2].style.display = 'block'
+
         }
         if((2022 - year) >= 18){
             document.cookie =`birthday=${birthday}`
+            error[3].style.display = 'none'
+
+        }else{
+            error[3].style.display = 'block'
+
         }
         return false;
 };
